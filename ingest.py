@@ -195,6 +195,21 @@ def enrich_clusters(cl: pd.DataFrame, hw: pd.DataFrame) -> pd.DataFrame:
     cl["annual_flop"]       = cl["sustained_flops_s"] * A["seconds_per_year"]
     cl["it_power_mw"]       = cl["_chip_count"] * med_tdp / 1e6
     cl["facility_power_mw"] = cl["it_power_mw"] * A["PUE"]
+
+    # Prefer a MEASURED nameplate over our chip-count derivation.
+    # Epoch already carries disclosed/estimated capacity for many clusters;
+    # using it avoids under/over-counting from a single median-TDP assumption.
+    #   power_capacity_mw = Reported  ?? Epoch-Calculated  ?? derived(facility_power_mw)
+    rep_col = _pick(cl, "reported", "capacity")     # 'Reported Power Capacity (MW)'
+    cap_col = _pick(cl, "power", "capacity", "mw")  # 'Power Capacity (MW)' (= Epoch calc)
+    reported = pd.to_numeric(cl.get(rep_col), errors="coerce")
+    calc     = pd.to_numeric(cl.get(cap_col), errors="coerce")
+    # coalesce in priority order; track which source each row used (for honesty)
+    cl["power_capacity_mw"] = reported.combine_first(calc).combine_first(cl["facility_power_mw"])
+    src = pd.Series("derived (chips x TDP x PUE)", index=cl.index)
+    src = src.mask(calc.notna(),     "calculated (Epoch)")
+    src = src.mask(reported.notna(), "reported")
+    cl["power_capacity_source"] = src
     return cl
 
 
@@ -244,24 +259,55 @@ def enrich_models(m: pd.DataFrame) -> pd.DataFrame:
 
 def build_power_bridge(clusters: pd.DataFrame, eia_demand: pd.DataFrame) -> pd.DataFrame:
     """
-    The join that makes 'all three in one view' meaningful.
+    The join that makes 'all three in one view' meaningful — done honestly.
 
-    Total known AI cluster facility power vs. the grid it sits on:
+    AI side (global, measured-preferred nameplate):
+      ai_cluster_power_mw = sum(cluster.power_capacity_mw)      # MW of nameplate
 
-      ai_facility_power_mw = sum(cluster.facility_power_mw)
-      grid_hourly_mw       = latest EIA hourly demand (MWh over 1h = MW)
-      ai_share_of_grid     = ai_facility_power_mw / grid_hourly_mw
+    Grid side (US actual demand, NOT a forecast):
+      The region-data feed carries several 'type' codes (D=actual demand,
+      DF=day-ahead forecast, NG=net generation, TI=interchange) AND nested
+      respondents: individual balancing authorities, regional aggregates
+      (CAL, TEX, MIDW, ...), and the lower-48 total 'US48'. Summing respondents
+      would double/triple-count. So we take the authoritative national total:
+        grid_actual_demand_mw = latest D reading for respondent 'US48'
+      A value in MWh delivered over one hour equals an average MW.
 
-    Returns a one-row summary frame (extend by region as needed).
+      ai_share_of_grid = ai_cluster_power_mw / grid_actual_demand_mw
+
+    CAVEAT (surfaced in the dashboard, not hidden): the numerator is GLOBAL AI
+    cluster nameplate; the denominator is a snapshot of US actual demand. It is a
+    rough order-of-magnitude sanity check, not a national load-share statistic.
+
+    Returns a one-row summary frame.
     """
-    ai_mw = clusters["facility_power_mw"].sum(skipna=True) if not clusters.empty else float("nan")
+    ai_mw = (clusters["power_capacity_mw"].sum(skipna=True)
+             if (not clusters.empty and "power_capacity_mw" in clusters) else float("nan"))
+
     grid_mw = float("nan")
-    if not eia_demand.empty and "value" in eia_demand.columns:
-        grid_mw = pd.to_numeric(eia_demand["value"], errors="coerce").dropna().iloc[:1].sum()
+    region = None
+    latest_period = None
+    if not eia_demand.empty and {"value", "type", "respondent"}.issubset(eia_demand.columns):
+        d = eia_demand[eia_demand["type"] == "D"].copy()          # actual demand only
+        d["value"] = pd.to_numeric(d["value"], errors="coerce")
+        d = d.dropna(subset=["value"])
+        # Prefer the lower-48 total; fall back to the largest single respondent
+        # if US48 is absent, and label whichever we used (never a summed total).
+        us48 = d[d["respondent"] == "US48"]
+        pick = us48 if not us48.empty else d
+        if not pick.empty:
+            latest = pick.sort_values("period").groupby("respondent").tail(1)
+            top = latest.sort_values("value", ascending=False).iloc[0]
+            grid_mw = float(top["value"])                         # MWh over 1h == avg MW
+            region = str(top["respondent"])
+            latest_period = str(pick["period"].max())
+
     row = {
-        "ai_cluster_facility_power_mw": ai_mw,
-        "grid_hourly_demand_mw": grid_mw,
-        "ai_share_of_grid": (ai_mw / grid_mw) if grid_mw else float("nan"),
+        "ai_cluster_power_mw": ai_mw,
+        "grid_actual_demand_mw": grid_mw,
+        "ai_share_of_grid": (ai_mw / grid_mw) if (grid_mw and grid_mw == grid_mw) else float("nan"),
+        "grid_region": region,
+        "grid_latest_period": latest_period,
     }
     return pd.DataFrame([row])
 
@@ -297,9 +343,34 @@ def run(use_eia: bool = True) -> dict[str, pd.DataFrame]:
         "companies_demand": firms, "eia_power": eia, "power_bridge": bridge,
     }
     for name, df in tables.items():
-        df.to_parquet(OUT / f"{name}.parquet", index=False)
+        _parquet_safe(df).to_parquet(OUT / f"{name}.parquet", index=False)
     log.info("Wrote %d tables to %s", len(tables), OUT)
+
+    # --- Excel-friendly CSV copies + single-page HTML dashboard -------------
+    import dashboard as D
+    D.write_csvs(tables, OUT)
+    D.write_dashboard(tables)
+
     return tables
+
+
+def _parquet_safe(df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Make a frame safe for the Arrow/parquet writer WITHOUT altering any values.
+
+    Some Epoch columns (e.g. gpu_clusters 'Max OP/s' = 5.458e20) arrive as
+    Python big-ints in an object column. Arrow tries to pack them into int64
+    (max ~9.2e18) and raises OverflowError. Converting object columns to the
+    pandas 'string' dtype preserves the exact decimal digits and keeps <NA>
+    for blanks — no data is fabricated or rounded.
+    """
+    if df.empty:
+        return df
+    df = df.copy()
+    for col in df.columns:
+        if df[col].dtype == object:
+            df[col] = df[col].astype("string")
+    return df
 
 
 if __name__ == "__main__":

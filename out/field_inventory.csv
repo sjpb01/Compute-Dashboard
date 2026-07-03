@@ -1,0 +1,237 @@
+feed,lens,column,dtype,sample_value
+ai_models,demand,Model,str,Claude Sonnet 5
+ai_models,demand,Domain,str,"Language,Multimodal"
+ai_models,demand,Task,str,"Language modeling/generation,Question answering"
+ai_models,demand,Organization,str,Anthropic
+ai_models,demand,Authors,str,"Jay Alammar, Sophia Althammer, Dennis Aumiller, Leon EnglÃ¤n..."
+ai_models,demand,Publication date,str,2026-06-30
+ai_models,demand,Reference,str,Introducing Claude Sonnet 5
+ai_models,demand,Link,str,https://www.anthropic.com/news/claude-sonnet-5
+ai_models,demand,Citations,float64,308.0
+ai_models,demand,Notability criteria,str,SOTA improvement
+ai_models,demand,Notability criteria notes,str,Ahead of latest frontier models at time of release on benchm...
+ai_models,demand,Parameters,float64,30000000000.0
+ai_models,demand,Parameters notes,str,"30B total, 3B active"
+ai_models,demand,Training compute (FLOP),float64,6.6e+24
+ai_models,demand,Training compute notes,str,"55 billion active parameters, ~20T tokens"
+ai_models,demand,Training dataset size (total),str,27000000000000
+ai_models,demand,Dataset size notes,str,11T tokens
+ai_models,demand,Training time (hours),float64,1572.0
+ai_models,demand,Training time notes,str,"""Approx. 65.5 days (Net training time excluding downtime)"" p..."
+ai_models,demand,Training hardware,str,NVIDIA B300 (Blackwell Ultra)
+ai_models,demand,Approach,str,Reinforcement learning
+ai_models,demand,Confidence,str,Confident
+ai_models,demand,Abstract,str,Claude Sonnet 5 is built to be the most agentic Sonnet model...
+ai_models,demand,Epochs,float64,1.0
+ai_models,demand,WikiText and Penn Treebank data,str,LLaMA-7B (LoRA finetuned)
+ai_models,demand,Model accessibility,str,API access
+ai_models,demand,Country (of organization),str,United States of America
+ai_models,demand,Base model,str,Kimi K2.5
+ai_models,demand,Finetune compute (FLOP),float64,2.78256e+24
+ai_models,demand,Finetune compute notes,str,"
+"
+ai_models,demand,Hardware quantity,float64,2000.0
+ai_models,demand,Hardware utilization (MFU),float64,0.283
+ai_models,demand,Last modified,str,2026-07-01 16:13:14+00:00
+ai_models,demand,Training cloud compute vendor,str,IBM
+ai_models,demand,Training data center,str,"""We train granite-docling-258m using IBM's super computing c..."
+ai_models,demand,Archived links,str,Yi-34B
+ai_models,demand,Batch size,float64,8000.0
+ai_models,demand,Batch size notes,str,"Multi-stage training strategy:
+    Pre-training Stage 1 (Mai..."
+ai_models,demand,Organization categorization,str,Industry
+ai_models,demand,Foundation model,object,True
+ai_models,demand,Training compute lower bound,float64,1.152e+24
+ai_models,demand,Training compute upper bound,float64,2.3e+25
+ai_models,demand,Training chip-hours,float64,50000.0
+ai_models,demand,Training code accessibility,str,Unreleased
+ai_models,demand,Accessibility notes,str,"Currently only available to select users - ""[a]  small group..."
+ai_models,demand,Possibly over 1e23 FLOP,object,True
+ai_models,demand,Training compute cost (2023 USD),float64,9642947.0
+ai_models,demand,Utilization notes,str,"Abstract says: ""We achieve 47% Model FLOPs Utilization (MFU)..."
+ai_models,demand,Numerical format,str,NVFP4
+ai_models,demand,Frontier model,object,True
+ai_models,demand,Training power draw (W),float64,4672690.306975335
+ai_models,demand,Training compute estimation method,str,Comparison with other models
+ai_models,demand,Hugging Face developer id,str,CohereLabs
+ai_models,demand,Post-training compute (FLOP),float64,9.4e+22
+ai_models,demand,Post-training compute notes,str,Section 4 gives detail about the post-training process. They...
+ai_models,demand,Hardware utilization (HFU),float64,0.927
+ai_models,demand,Open model weights?,str,No
+ai_companies,demand,Id,str,May 2026 47B
+ai_companies,demand,Company,str,Anthropic
+ai_companies,demand,Date,str,2026-05-15
+ai_companies,demand,Annualized revenue (USD),float64,47000000000.0
+ai_companies,demand,Annualized revenue type,str,Annualized run rate
+ai_companies,demand,Scope,str,Full company
+ai_companies,demand,Revenue amount (normalize to annual),float64,47000000000.0
+ai_companies,demand,Period revenue,float64,4500000000.0
+ai_companies,demand,Period type,str,Year
+ai_companies,demand,Other revenue info,str,4.3B in H1
+ai_companies,demand,Confidence,str,Likely
+ai_companies,demand,Source 1,str,https://www.anthropic.com/news/series-h
+ai_companies,demand,Source 2,str,https://www.ft.com/content/a40cafcc-0fa4-4e70-9e24-90d826aea...
+ai_companies,demand,Source 3,str,https://www.theinformation.com/articles/openai-held-1-billio...
+ai_companies,demand,Notes,str,"""…and our run-rate revenue crossed $47 billion earlier this ..."
+ai_companies,demand,Report date,str,2026-05-28
+ai_companies,demand,Source type,str,Company disclosure
+ai_companies,demand,Graph note,str,"Date is approximate, based on interpolating average revenue ..."
+gpu_clusters,capacity,Name,str,xAI Colossus Memphis Phase 3
+gpu_clusters,capacity,Status,str,Existing
+gpu_clusters,capacity,Certainty,str,Confirmed
+gpu_clusters,capacity,Single cluster?,str,Yes
+gpu_clusters,capacity,Max OP/s (log),float64,20.737033531333875
+gpu_clusters,capacity,H100 equivalents,float64,275795.85649723833
+gpu_clusters,capacity,Chip type (primary),str,NVIDIA H100 SXM5 80GB
+gpu_clusters,capacity,Chip quantity (primary),float64,200000.0
+gpu_clusters,capacity,Country,str,United States of America
+gpu_clusters,capacity,Owner,str,xAI
+gpu_clusters,capacity,First Operational Date,str,2025-07-22
+gpu_clusters,capacity,Note,str,"we know from earlier that it has 150k H100s and 50k H200s, w..."
+gpu_clusters,capacity,Sector,str,Private
+gpu_clusters,capacity,Power Capacity (MW),float64,352.352
+gpu_clusters,capacity,Hardware Cost,float64,7120201208.681584
+gpu_clusters,capacity,Location,str,"3231 Riverport Rd, Memphis, TN 38109"
+gpu_clusters,capacity,Users,str,xAI
+gpu_clusters,capacity,Hardware note,str,"150k H100s, 50k H200s, 30k GB200s,H100,GB200,H200"
+gpu_clusters,capacity,Quote,str,"""230k GPUs, including 30k GB200s, are operational for traini..."
+gpu_clusters,capacity,First Operational Date Note,str,2025-07-22
+gpu_clusters,capacity,Certainty Note,str,Reported to be online by Musk
+gpu_clusters,capacity,Energy Efficiency (log),float64,11.88899496544189
+gpu_clusters,capacity,Builds Upon,str,xAI Colossus Memphis Phase 2
+gpu_clusters,capacity,Superseded by,str,xAI Colossus Memphis Phase 3
+gpu_clusters,capacity,Possible Duplicate,float64,(all blank)
+gpu_clusters,capacity,Possible Duplicate Of,float64,(all blank)
+gpu_clusters,capacity,Chip type (secondary),str,NVIDIA GB200
+gpu_clusters,capacity,Chip quantity (secondary),float64,30000.0
+gpu_clusters,capacity,Total number of AI chips,float64,230000.0
+gpu_clusters,capacity,GPU Supplier (primary),str,NVIDIA
+gpu_clusters,capacity,GPU supplier (secondary),str,NVIDIA
+gpu_clusters,capacity,Include in Standard Analysis,bool,True
+gpu_clusters,capacity,Exclude,float64,(all blank)
+gpu_clusters,capacity,Rank when first operational,float64,1.0
+gpu_clusters,capacity,16-bit OP/s (log),float64,20.43597170639934
+gpu_clusters,capacity,Max OP/s,str,545800000000000000000
+gpu_clusters,capacity,8-bit OP/s,object,545800000000000000000
+gpu_clusters,capacity,16-bit OP/s,object,272880000000000000000
+gpu_clusters,capacity,32-bit OP/s,str,136440000000000000000
+gpu_clusters,capacity,Calculated Power Capacity (MW),float64,352.352
+gpu_clusters,capacity,Reported Power Capacity (MW),float64,150.0
+gpu_clusters,capacity,Energy Efficiency,float64,774452819907.3654
+gpu_clusters,capacity,Calculated Cost,float64,7120201208.681584
+gpu_clusters,capacity,Reported Cost,float64,600000000.0
+gpu_clusters,capacity,Reported Cost (Inflation adjusted),float64,607324736.6965789
+gpu_clusters,capacity,Cost Quote,str,$600M was quoted as the max cost 
+gpu_clusters,capacity,Noteworthy,object,True
+gpu_clusters,capacity,Decommissioned Date (if applicable),float64,(all blank)
+gpu_clusters,capacity,Largest existing cluster when first operational,str,xAI Colossus Memphis Phase 2
+gpu_clusters,capacity,% of largest cluster when first operational,float64,1.0
+gpu_clusters,capacity,Source 1,str,https://archive.ph/oHQSA
+gpu_clusters,capacity,Source 2,str,https://web.archive.org/web/20241217184541/https://memphisch...
+gpu_clusters,capacity,Source 3,str,https://web.archive.org/web/20241217184541/https://memphisch...
+gpu_clusters,capacity,Source 4,str,https://www.youtube.com/watch?v=AUAJ82H12qs&t=260s
+gpu_clusters,capacity,Source 5,str,https://top500.org/system/180357/
+data_centers,capacity+power,Model,str,XES3E-1020-07G
+data_centers,capacity+power,Manufacturer,str,BAC
+data_centers,capacity+power,Length (m),float64,6.12
+data_centers,capacity+power,Width (m),float64,3.0
+data_centers,capacity+power,Height (m),float64,3.71
+data_centers,capacity+power,Area (m^2),float64,18.35
+data_centers,capacity+power,"Cooling capacity (stated, kW)",str,"1,001"
+data_centers,capacity+power,"Cooling capacity (central estimate, kW)",float64,1001.0
+data_centers,capacity+power,Source,str,Product Catalog
+data_centers,capacity+power,Link,str,https://www.calameo.com/read/0073621279a1d0c9ca0e2?authid=Ms...
+data_centers,capacity+power,Spot check,str,"Correct, a range of capacity is given in tons."
+data_centers,capacity+power,Notes,str,Bit of an outlier
+data_centers,capacity+power,Fan Diameter (m),float64,1.83
+data_centers,capacity+power,Number of Fans,float64,1.0
+data_centers,capacity+power,Fan estimate diameter (m),float64,2.85
+data_centers,capacity+power,Type,str,Wet
+data_centers,capacity+power,Motor Horsepower,float64,3.0
+ml_hardware,capacity,Hardware name,str,Meta MTIA 300
+ml_hardware,capacity,Manufacturer,str,Meta
+ml_hardware,capacity,Type,str,Other
+ml_hardware,capacity,Notes,str,Primarily used for ranking and recommendation (R&R) inferenc...
+ml_hardware,capacity,Release date,str,2026-03-11
+ml_hardware,capacity,Release price (USD),float64,12000.0
+ml_hardware,capacity,Tensor-FP16/BF16 performance (FLOP/s),float64,600000000000000.0
+ml_hardware,capacity,FP8 performance (FLOP/s),float64,1200000000000000.0
+ml_hardware,capacity,FP4 performance (FLOP/s),float64,1.0145e+16
+ml_hardware,capacity,Memory (bytes),float64,216000000000.0
+ml_hardware,capacity,Memory bandwidth (byte/s),float64,6100000000000.0
+ml_hardware,capacity,Intranode bandwidth (byte/s),float64,1800000000000.0
+ml_hardware,capacity,Internode bandwidth (bit/s),float64,784000000000.0
+ml_hardware,capacity,TDP (W),float64,800.0
+ml_hardware,capacity,FP64 (double precision) performance (FLOP/s),float64,1300000000000.0
+ml_hardware,capacity,FP32 (single precision) performance (FLOP/s),float64,183000000000000.0
+ml_hardware,capacity,TF32 (TensorFloat-32) performance (FLOP/s),float64,671000000000000.0
+ml_hardware,capacity,FP16 (half precision) performance (FLOP/s),float64,2340000000000000.0
+ml_hardware,capacity,INT16 performance (OP/s),float64,128000000000000.0
+ml_hardware,capacity,INT8 performance (OP/s),float64,165000000000000.0
+ml_hardware,capacity,INT4 performance (OP/s),float64,1.5e+16
+ml_hardware,capacity,Foundry,str,TSMC
+ml_hardware,capacity,Die Size (mm^2),float64,750.0
+ml_hardware,capacity,Base clock (MHz),float64,1590.0
+ml_hardware,capacity,Boost clock (MHz),float64,2617.0
+ml_hardware,capacity,Memory clock (MHz),float64,1750.0
+ml_hardware,capacity,Memory bus (bit),float64,512.0
+ml_hardware,capacity,Tensor cores,float64,640.0
+ml_hardware,capacity,Process size (nm),float64,6.0
+ml_hardware,capacity,Transistors (millions),float64,140000.0
+ml_hardware,capacity,Link to datasheet,str,https://ai.meta.com/blog/meta-mtia-scale-ai-chips-for-billio...
+ml_hardware,capacity,Source for the price,str,https://epoch.ai/data/ai-chip-sales-documentation/methodolog...
+ml_hardware,capacity,ML models,str,Gemini 3 Pro
+ml_hardware,capacity,Last modified,str,2026-05-27 18:59:10+00:00
+ml_hardware,capacity,Max performance,float64,600000000000000.0
+ml_hardware,capacity,Energy efficiency,float64,750000000000.0
+ml_hardware,capacity,Total processing performance (bit-OP/s),float64,9600000000000000.0
+ml_hardware,capacity,Price-performance,float64,192250000000.0
+ml_hardware,capacity,ML OP/s,float64,1200000000000000.0
+ai_chip_sales,capacity,Name,str,A100 Q1 2022 to Q1 2022
+ai_chip_sales,capacity,Start date,str,2022-01-01
+ai_chip_sales,capacity,End date,str,2022-03-31
+ai_chip_sales,capacity,Chip manufacturer,str,Nvidia
+ai_chip_sales,capacity,Chip type,str,A100
+ai_chip_sales,capacity,Number of units (median),int64,212120
+ai_chip_sales,capacity,Number of units (5th percentile),int64,163481
+ai_chip_sales,capacity,Number of units (95th percentile),int64,276445
+ai_chip_sales,capacity,H100e compute power (median),float64,66883.0
+ai_chip_sales,capacity,H100e compute power (5th percentile),float64,51547.0
+ai_chip_sales,capacity,H100e compute power (95th percentile),float64,87166.0
+ai_chip_sales,capacity,Chip H100e,float64,0.315310763011622
+ai_chip_sales,capacity,Chip TDP (W),float64,400.0
+ai_chip_sales,capacity,Notes,str,Estimates generated on: 06-03-2026 17:56
+ai_chip_sales,capacity,Total TDP (W) (median),int64,84848000
+ai_chip_sales,capacity,Total TDP (W) (5th percentile),int64,65392400
+ai_chip_sales,capacity,Total TDP (W) (95th percentile),int64,110578000
+ai_chip_sales,capacity,Incomplete,object,True
+ai_chip_sales,capacity,Unofficial estimated TDP (W),float64,225.0
+ai_chip_owners,capacity,Name,str,Google A100 cumulative through Q1 2022
+ai_chip_owners,capacity,Chip manufacturer,str,Nvidia
+ai_chip_owners,capacity,Owner,str,Google
+ai_chip_owners,capacity,Chip type,str,A100
+ai_chip_owners,capacity,Start date,str,2022-01-01
+ai_chip_owners,capacity,End date,str,2022-03-31
+ai_chip_owners,capacity,Compute estimate in H100e (median),int64,5700
+ai_chip_owners,capacity,H100e (5th percentile),float64,3369.0
+ai_chip_owners,capacity,H100e (95th percentile),float64,9523.0
+ai_chip_owners,capacity,Number of Units (median),int64,18078
+ai_chip_owners,capacity,Number of Units (5th percentile),float64,10686.0
+ai_chip_owners,capacity,Number of Units (95th percentile),float64,30202.0
+ai_chip_owners,capacity,Source / Link,str,see methodology
+ai_chip_owners,capacity,Notes,str,Estimates generated on: 04-15-2026 18:24
+ai_chip_owners,capacity,Last Modified By,float64,(all blank)
+ai_chip_owners,capacity,Last Modified,float64,(all blank)
+ai_chip_owners,capacity,Incomplete,object,True
+ai_chip_owners,capacity,Created,str,2026-03-26T13:28:02.000Z
+ai_chip_owners,capacity,Total TDP (W),int64,7231236
+ai_chip_owners,capacity,Total TDP (W) (5th percentile),float64,4274522.0
+ai_chip_owners,capacity,Total TDP (W) (95th percentile),float64,12080901.0
+ai_chip_owners,capacity,Last Modified 2,str,2026-04-15 22:30:22+00:00
+eia_hourly_demand,power,period,str,2026-07-03T07
+eia_hourly_demand,power,respondent,str,AZPS
+eia_hourly_demand,power,respondent-name,str,Arizona Public Service Company
+eia_hourly_demand,power,type,str,DF
+eia_hourly_demand,power,type-name,str,Day-ahead demand forecast
+eia_hourly_demand,power,value,str,4546
+eia_hourly_demand,power,value-units,str,megawatthours
