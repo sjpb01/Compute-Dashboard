@@ -1,4 +1,7 @@
 Id,Company,Date,Annualized revenue (USD),Annualized revenue type,Scope,Revenue amount (normalize to annual),Period revenue,Period type,Other revenue info,Confidence,Source 1,Source 2,Source 3,Notes,Report date,Source type,Graph note
+OpenAI 40B,OpenAI,2026-08-13,40000000000.0,Annualized run rate,Full company,40000000000.0,,,,Likely,https://www.bloomberg.com/news/articles/2026-08-13/openai-s-revenue-run-rate-tops-40-billion-ahead-of-ipo,,,"""More than 40B"", so 40B could be an underestimate. 
+""OpenAI is on track to generate annualized revenue of more than $40 billion based on its current performance, according to people familiar with the matter, roughly doubling its run rate from the end of 2025 and bolstering the company’s plans for a Wall Street debut.""
+""...OpenAI co-founder and President Greg Brockman said the company’s annual revenue run rate increased more than 20% month-over-month in July.""",2026-08-13,Media report,"""More than 40B"", so 40B could be an underestimate. "
 500M July 2026,DeepSeek,2026-07-14,450000000.0,Annualized run rate,Full company,450000000.0,,,,Likely,https://www.theinformation.com/articles/deepseeks-annualized-revenue-nears-500-million-boosting-fundraise-ipo-plans?rc=9mzoog,,,"""The three-year-old startup’s annualized revenue reached between $400 million and $500 million recently thanks to sales of cloud-based access to its AI models through an application programming interface, the three people said.""
 
 450M is an estimate that is the midpoint of the reported range. ",2026-07-14,Media report,
